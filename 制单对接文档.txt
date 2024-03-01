@@ -1,0 +1,64 @@
+集行制单界面上传文件后机器人解析返回对应报文将制单值反写回制单界面。
+{
+  'head': {
+    '预录入编号(preNo)': '',--制单界面无法改所以不会写入String
+    '海关编号(customsFormalitiesNo)': '',--制单界面无法改所以不会写入String
+    '页码/页数': '',--制单界面不需要所以不会不用传
+    '境内发货人(operationName)': '境内发货人河北嘉天进出口有限公司',-集行直接会按中文全匹配字典，没有匹配到或者没传就会空白显示在界面String
+    '出境关别(portNoName): '',-集行直接会按中文全匹配字典刷新界面字段，匹配不到就空String
+    '出口日期'(inoutDate): '',-这个解析结果问题格式是YYYY-MM-DD，空String
+    '申报日期'(declaringDate): '',-这个解析结果问题格式是YYYY-MM-DD，空String
+    '备案号'(eoriNo): '', String
+    '境外收货人'（outReceivePerson）: 'PEPADIVISIONOFPEPKORTRADING(PTY)LTD', String
+    '运输方式'（transportType）: '海运',-集行直接会按中文全匹配界面下拉框，匹配不到就会显示空白的String
+    '运输工具名称（vesselName）：穿中文String
+    航次号':（voyage） '',- String
+    '提运单号（blNo）': '', String
+    '生产销售单位（manufacturerName）: '',-集行直接会按中文全匹配字典刷新界面字段，匹配不到就空，String
+    '监管方式'(regulationWay): '一般贸易',-集行直接会按中文全匹配界面下拉框String
+    '征免性质'(taxKinds): '一般征税',-集行直接会按中文全匹配界面下拉框String
+    '许可证号'(licenseKey): '', String
+    '合同协议号'（constractNo）: 'JT231003', String
+    '贸易国（地区）（tradeCountryCn）': '南非',-集行直接会按中文全匹配界面下拉框，匹配不到就会显示空白的String
+    '运抵国（地区）(destinationCn）': '南非',-集行直接会按中文全匹配界面下拉框，匹配不到就会显示空白的String
+    '指运港'(despPortCn): '开普敦',-集行直接会按港口中文名称全匹配界面下拉框，匹配不到就会显示空白的String
+    '离境口岸'（outPortCn）: '天津',-集行直接会按离境口岸全匹配界面下拉框，匹配不到就会显示空白的String
+    '包装种类'(pakageType): '纸箱',-集行直接会按名称全匹配界面下拉框，匹配不到就会显示空白的
+    '件数'(piecesNum): '183',-校验Long
+     '毛重（千克）grossWeight ': '2563.99',-校验数字类型Bigdecimal
+    '净重（千克）netWeight ': '2406.49',-校验数字类型Bigdecimal
+    '成交方式' dealType: 'FOB',-集行直接会按成交方式名称全匹配界面下拉框
+    '运费标识' freightFlag: '', String
+    '运费' freightRate: '',--数字直接写Bigdecimal
+    '运费币制' freightCurrencyNo '',String
+    '保费标识' premiumFlag: '', String
+    '保费' premiumRate: '',--数字直接写Bigdecimal
+    '保费币制' premiumCurrencyNo '',String
+    '杂费标识' incidentalFlag: '', String
+    '杂费' incidentalRate: '',--数字直接写Bigdecimal
+    '杂费币制' incidentalCurrencyNo '',String
+    '随附单证及编号' certType: '',--制单界面无法改所以不会写入String
+    '标记唛码': ' tagLabelCode ':--名称String
+  },
+  'products': [
+    {
+    '商品编号'(productCode): '6203439090', String
+    '中文品名' productNameCh): '工装裤',-写到商品信息String
+    '规格型号'(productMode): '3;0;;工装裤;;80%涤20%棉;;1179516',-解析结果格式不对，是单个;隔开的，解析出来的项数，系统里面申报要素的项数一样，不一样的话，都不解析，一样的话根据每一个项中文去匹配对应下拉框String
+    '成交数量'(dealCount): '2855',-写到数字整数 Bigdecimal
+    '成交单位'(dealUnit): '条',-集行直接会按成交单位文名称全匹配界面下拉框 String
+     '单价’（ dealPrice）Bigdecimal
+    ‘总价’（dealTotalPrice）’ Bigdecimal
+    ‘币制'（currencySystem）: 'CNY', String
+    '原产国'（countryOriginName）: '中国',-集行直接会按原产国中文名称全匹配没有就空String
+    '最终目的国'（finalDestinationCountryName）: '南非',-集行直接会按最终目的国中文名称全匹配没有就空String
+    '境内货源地'（inSupplyName）: '石家庄其他'-集行直接会按原境内货源地名称全匹配没有就空String
+　　　'法定第一计量单位'(legalUnitName): '台' ,-集行根据数据字典DM_STATUTORY_UNIT进行匹配
+　　　'法定第二计量单位'(secondUnitsName): '台' -集行根据数据字典DM_STATUTORY_UNIT进行匹配
+　　　'法定第一数量'(legalQuantity): '1' ,-数值 Bigdecimal
+　　　'法定第二数量'(secondQuanlity): '1' -数值 Bigdecimal
+　　　
+
+    }
+   ]
+}
